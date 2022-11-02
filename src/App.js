@@ -1,14 +1,33 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+import PageNotFound from "./components/404";
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
+import Login from "./components/Login";
 
 const App = () => {
   return (
-    <>
-    <Navbar/>
-    <Footer/>
-    </>
-  )
+    <Router>
+        <Switch>
+          <Route exact path="/">
+            <Navbar />
+            <Footer />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+            <Footer />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+    </Router>
+  );
 }
 
-export default App
+
+export default App;
